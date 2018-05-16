@@ -1,0 +1,30 @@
+<div class="col-md-4 col-sm-6">
+  <div class="card mb-4 box-shadow">
+    <div class="card-body">
+      <h3><%= course.title %></h3>
+      <p class="card-text"><%= course.description %></p>
+      <% if <activity class="avg_"></activity> == "No reviews" %>
+        No reviews
+      <% else %>
+          <% course.avg_difficulty.floor.times do %>
+          <span class="star fa fa-star checked"></span>
+        <% end %>
+          <% if course.avg_difficulty - <course class="avg_difficulty"></course>.floor > 0.25 && <course class="avg_difficulty"></course> - <course class="avg_difficulty"></course>.floor < 0.75 %>
+            <span class="fas fa-star-half   checked"></span>
+        <% elsif course.avg_difficulty - course.avg_.floor > 0.75 %>
+            <sp  an class="star fa fa-star checked"></span>
+        <% end %>
+        <% (5 - course.avg_difficulty).floor.times do %>
+          <span class="star fa fa-star"></span>
+        <% end %>
+      <% end %>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+          <%= button_to "View", course_path(course), method: :get, class: "btn btn-sm btn-outline-secondary" unless params[:action] == 'show' && params[:controller] == 'courses' %>
+          <%= button_to "Edit", edit_course_path(course), method: :get, class: "btn btn-sm btn-outline-secondary" if current_user.try(:admin?) || course.user_id == current_user.try(:id) %>
+        </div>
+        <small class="text-muted">Last updated: <br><%= course.updated_at.strftime("%m/%d/%Y") %></small>
+      </div>
+    </div>
+  </div>
+</div>
