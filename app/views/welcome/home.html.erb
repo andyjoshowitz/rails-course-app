@@ -1,0 +1,39 @@
+<main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Popular Categories</h1>
+          <br>
+          <%= render partial: "categories/category_card", locals: { categories: @first_six_categories } %>
+          <div class="row">
+            <div class="col">
+              <%= link_to "See all categories", categories_path, class: "btn btn-outline-dark my-2" %>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <div class="album py-5 bg-light mb-5">
+        <div class="container">
+          <div class="row justify-content-md-center">
+            <h1>Recently Added Activities</h1>
+          </div>
+          <div class="row justify-content-between">
+            <div class="col-3">
+              <%= link_to "See all activities", activities_path, class: "btn btn-outline-dark my-2" %>
+            </div>
+            <div class="col-md-3">
+              <%= link_to "New activity", new_activity_path, class: "btn btn-outline-dark" %>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <%= render partial: "activities/activity_details_for_index", collection: @newest_activities, as: :activity %>
+          </div>
+          <%= link_to "See all activities", activities_path, class: "btn btn-outline-dark my-2" %>
+        </div>
+      </div>
+
+
+    </main>
