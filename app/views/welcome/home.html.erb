@@ -1,23 +1,20 @@
 <main role="main">
-
       <div class="album py-5 bg-light mb-5">
         <div class="container">
           <div class="row justify-content-md-center">
-            <h1>Recently Added Courses</h1>
-          </div>
-          <div class="row justify-content-between">
-            <div class="col-3">
-              <%= link_to "See all courses", courses_path, class: "btn btn-outline-dark my-2" %>
-            </div>
-            <div class="col-md-3">
-              <%= link_to "New course", new_course_path, class: "btn btn-outline-dark" %>
-            </div>
+            <h1>Welcome to Course Reviewer!</h1>
           </div>
           <br>
           <div class="row">
             <%= render partial: "courses/course_details_for_index", collection: @newest_courses, as: :course %>
           </div>
-          <%= link_to "See all courses", courses_path, class: "btn btn-outline-dark my-2" %>
+          <h3>Options:</h3>
+          <ul>
+            <li><%= link_to "New course", new_course_path, class: "btn btn-outline-dark" %></li>
+            <li><%= link_to "See all courses", courses_path, class: "btn btn-outline-dark my-2" %></li>
+            <li><%= link_to "New instructor", new_instructor_path, class: "btn btn-outline-dark" %></li>
+            <li><%= link_to "See all instructors", instructors_path, class: "btn btn-outline-dark my-2" %></li>
+          </ul>
         </div>
       </div>
 

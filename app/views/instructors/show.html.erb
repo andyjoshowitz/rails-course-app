@@ -1,18 +1,17 @@
 <div class="album bg-light py-5 px-5 my-5">
   <div class="row justify-content-between">
-    <%= render partial: "instructor_card", locals: { instructor: @instructor } %>
-    <div class="col-md-3">
-      <%= link_to "Add an Activity", new_location_activity_path, class: "btn btn-outline-dark" %>
-    </div>
+    <h1><%= @instructor.first_name%> <%=@instructor.second_name%></h1>
   </div>
-
 
   <h3>Courses</h3>
   <div class="row">
     <% @instructor.courses.each do |activity| %>
 
-      <%= render partial: "courses/course_details_for_index", locals: { course: course } %>
+      <%= render partial: "courses/course_details_for_index", locals: { location: course } %>
 
     <% end %>
+    <div class="col-md-3">
+      <%= link_to "Add an Course", new_instructor_course_path, class: "btn btn-outline-dark" %>
+    </div>
   </div>
 </div>

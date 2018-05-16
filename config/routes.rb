@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
   get 'welcome/home'
-
-  get 'courses/most_popular', to: 'courses#most_popular'
   get 'instructors/:id/new_course', to: "instructors#new_course", as: "new_instructor_course"
 
   resources :instructors

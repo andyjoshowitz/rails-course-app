@@ -1,12 +1,8 @@
 <div class="album bg-light py-5 px-5 my-5">
-  <h1>Activities</h1>
-  <div class="row justify-content-between">
-    <div class="col-sm-3">
-      <%= link_to "Most popular", courses_most_popular_path, class: "btn btn-outline-dark" %>
-    </div>
-  </div>
-  <br>
+  <h1>Courses</h1>
   <div class="row">
-        <%= render partial: "courses/course_details_for_index", collection: @activities, as: :activity %>
+        <%= render partial: "courses/course_details_for_index", collection: @courses, as: :course %>
   </div>
+
+  <%= link_to "Homepage", welcome_home_path, class: "btn btn-outline-dark" %>
 </div>

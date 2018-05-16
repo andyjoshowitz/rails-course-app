@@ -46,13 +46,6 @@ class CoursesController < ApplicationController
     redirect_to root_path
   end
 
-  def most_popular
-    with_null = Course.no_reviews
-    without_null = Course.most_popular
-    @courses = without_null + with_null
-  end
-
-
   private
 
   def course_params
