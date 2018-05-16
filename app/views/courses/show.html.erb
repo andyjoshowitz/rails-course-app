@@ -5,13 +5,13 @@
       <p><%= @course.description %></p>
       <br><br>
         <div class="col-md-3">
-          <%= link_to "Edit activity", edit_activity_path(@activity), class: "btn btn-outline-dark" if current_user.try(:admin?) || @activity.user_id == current_user.try(:id) %><br>
-          <%= link_to "All activities", activities_path, class: "btn btn-outline-dark" %>
+          <%= link_to "Edit course", edit_course_path(@course), class: "btn btn-outline-dark" if current_user.try(:admin?) || @course.user_id == current_user.try(:id) %><br>
+          <%= link_to "All courses", courses_path, class: "btn btn-outline-dark" %>
         </div>
       </div>
     </div>
-    <% if @activity.instructor %>
-      <%= render partial: 'locations/location_card', locals: { location: @activity.location } %>
+    <% if @course.instructor %>
+      <%= render partial: 'instructor/instructor_card', locals: { location: @course.instructor } %>
     <% end %>
   </div>
   <br>
@@ -23,11 +23,11 @@
       <h3>Reviews</h3>
     </div>
     <div class="col-md-3">
-      <%= link_to "Write a review", new_activity_review_path(@activity), class: "btn btn-outline-dark" %>
+      <%= link_to "Write a review", new_course_review_path(@course), class: "btn btn-outline-dark" %>
     </div>
   </div>
   <br>
-  <% @activity.reviews.each do |review| %>
+  <% @course.reviews.each do |review| %>
     <div class="review-box card rounded">
 
       <div class="card-header">
@@ -52,10 +52,10 @@
     <% if current_user == review.user %>
     <div class="row justify-content-between">
       <div class="col">
-        <%= link_to "Edit your review", edit_activity_review_path(id: review.id, activity_id: @activity.id), class: "btn btn-outline-dark" %>
+        <%= link_to "Edit your review", edit_course_review_path(id: review.id, activity_id: @activity.id), class: "btn btn-outline-dark" %>
       </div>
       <div class="col-md-3">
-        <%= link_to "Delete your review", activity_review_path(@activity, review), :method => :delete, class: "btn btn-outline-danger" %>
+        <%= link_to "Delete your review", course_review_path(@course, review), :method => :delete, class: "btn btn-outline-danger" %>
       </div>
     </div>
 

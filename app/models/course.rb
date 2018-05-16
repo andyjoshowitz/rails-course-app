@@ -5,6 +5,7 @@ class Course < ApplicationRecord
 
   validates_presence_of :title
   validates :title, length: { maximum: 60 }
+  validates :department, length: {maximum: 5} 
   validates_presence_of :description
 
   def instructor_attributes=(instructor_attributes)

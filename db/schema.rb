@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_16_122945) do
+ActiveRecord::Schema.define(version: 2018_05_16_141807) do
 
 # Could not dump table "courses" because of following StandardError
 #   Unknown type 'belong_to' for column 'instructors'
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2018_05_16_122945) do
     t.integer "courses_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "course_id"
+    t.index ["course_id"], name: "index_reviews_on_course_id"
     t.index ["courses_id"], name: "index_reviews_on_courses_id"
     t.index ["users_id"], name: "index_reviews_on_users_id"
   end
