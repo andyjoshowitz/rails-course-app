@@ -10,6 +10,125 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+ @import "bootstrap";
+ @import "font-awesome";
+ @import url('https://fonts.googleapis.com/css?family=Mallanna|Montserrat|Open+Sans|Quicksand');
+
+
+// font-family: 'Open Sans', sans-serif;
+// font-family: 'Montserrat', sans-serif;
+// font-family: 'Quicksand', sans-serif;
+// font-family: 'Mallanna', sans-serif;
+
+ html {
+   height: 100%;
+ }
+
+  body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    background-color: #e3eeef;
+    font-family: 'Mallanna', sans-serif;
+    // font-family: 'Montserrat', sans-serif;
+    // background-color: #d7e6e8
+  }
+
+  #body-wrapper {
+    min-height: 400px;
+   margin-bottom: 300px;
+   clear: both;
+  }
+
+  .jumbotron {
+    // background-color: white
+  }
+
+////////// ERROR MESSAGES //////////
+
+ .field_with_errors input, .field_with_errors textarea {
+   border: 1px solid red
+ }
+
+ #error_explanation {
+   border: 1px solid red;
+   padding: 2px;
+   margin-bottom: 2px
+ }
+
+ #error_explanation li {
+   color: red
+ }
+
+ /////////////////////////////////////
+
+ .thumb {
+   background-color: #efefef;
+   height: 100px;
+   width: 100px
+ }
+
+ .review-box {
+   border: 1px solid #388087;
+ }
+
+ .star.checked {
+    color: orange;
+}
+.half-star {
+
+}
+
+.fas.checked {
+  color: orange;
+}
+
+/////////////FOOTER////////////////
+
+ .footer {
+   position: absolute;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   padding: 1rem;
+   margin-top: 1rem;
+   background-color: #383838;
+   color: white;
+   text-align: center;
+   overflow: hidden;
+}
+
+////////////Trying to get col's equal height (SHOULD DEFAULT TO THIS!)/////////
+ .row.match-my-cols {
+    overflow: hidden;
+}
+
+.row.match-my-cols [class*="col"]{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
+.row-eq-height > [class^=col] {
+  display: flex;
+  flex-direction: column;
+}
+
+.row-eq-height > [class^=col]:last-of-type div {
+  margin: 10px;
+}
+
+.row-eq-height > [class^=col]:last-of-type div:first-of-type {
+  margin-top: 0;
+}
+
+.row-eq-height > [class^=col]:last-of-type div:last-of-type {
+  margin-bottom: 0;
+}
+
+.row-eq-height > [class^=col]:first-of-type .black {
+  flex-grow: 1;
+}
