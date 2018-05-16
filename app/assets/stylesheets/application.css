@@ -12,7 +12,7 @@
  *
  */
 
- // Custom bootstrap variables must be set or imported *before* bootstrap.
+ /* Custom bootstrap variables must be set or imported *before* bootstrap.*/
  @import "bootstrap";
  @import "font-awesome";
  @import url('https://fonts.googleapis.com/css?family=Mallanna|Montserrat|Open+Sans|Quicksand');
@@ -102,7 +102,7 @@
    overflow: hidden;
 }
 
-////////////Trying to get col's equal height (SHOULD DEFAULT TO THIS!)/////////
+////////////Trying to get cols equal height (SHOULD DEFAULT TO THIS!)/////////
  .row.match-my-cols {
     overflow: hidden;
 }
