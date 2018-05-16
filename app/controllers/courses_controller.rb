@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
-    @course.build_location()
+    @course.build_instructor()
   end
 
   def create

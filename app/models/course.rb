@@ -1,17 +1,11 @@
 class Course < ApplicationRecord
   has_many :reviews
   belongs_to :user
+  belongs_to :instructor, optional: true
 
-  belongs_to :user
-has_many :activity_categories
-has_many :categories, through: :activity_categories
-has_many :reviews
-has_many :photos
-belongs_to :location, optional: true
-
-validates_presence_of :title
-validates :title, length: { maximum: 60 }
-validates_presence_of :description
+  validates_presence_of :title
+  validates :title, length: { maximum: 60 }
+  validates_presence_of :description
 
   def instructor_attributes=(instructor_attributes)
     self.build_instructor(instructor_attributes)
