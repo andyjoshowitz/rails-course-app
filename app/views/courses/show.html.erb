@@ -20,21 +20,20 @@
     <div class="col">
       <h3>Reviews</h3>
     </div>
-    <div class="col-md-3">
-      <%= link_to "Write a review", new_course_review_path(@course), class: "btn btn-outline-dark" %>
-    </div>
+    <p>Overall Ratings</p>
+    <ul>
+      <li> Average Difficulty: <%= @course.avg_difficulty %></li>
+      <li> Instructor Quality: <%= @course.instructor_quality %></li>
+      <li> Workload: <%= @course.work_amount %></li>
+      <li> Amount Learned: <%= @course.amount_learned %></li>
+      <li> Overall Quality: <%= @course.overall_quality %></li>
+    </ul>
   </div>
   <br>
   <% @course.reviews.each do |review| %>
     <div class="review-box card rounded">
 
       <div class="card-header">
-
-        <span class="star fa fa-star <%= "checked" if review.difficulty > 0 %>"></span>
-        <span class="star fa fa-star <%= "checked" if review.difficulty > 1 %>"></span>
-        <span class="star fa fa-star <%= "checked" if review.difficulty > 2 %>"></span>
-        <span class="star fa fa-star <%= "checked" if review.difficulty > 3 %>"></span>
-        <span class="star fa fa-star <%= "checked" if review.difficulty > 4 %>"></span>
         <h3>From <%= @course.user.username %>:</h3>
       </div>
       <div class="card-body">

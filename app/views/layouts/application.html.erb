@@ -12,18 +12,19 @@
   <body>
     <%= yield %>
   </body>
+  <br>
   <footer>
     <%= link_to "New course", new_course_path, class: "btn btn-outline-dark" %> |
     <%= link_to "See all courses", courses_path, class: "btn btn-outline-dark my-2" %> |
     <%= link_to "New instructor", new_instructor_path, class: "btn btn-outline-dark" %> |
     <%= link_to "See all instructors", instructors_path, class: "btn btn-outline-dark my-2" %>
     <br>
-    <%= link_to "Homepage", welcome_home_path, class: "btn btn-outline-dark" %>
+    <small><%= link_to "Homepage", welcome_home_path, class: "btn btn-outline-dark" %></small>
       |
       <% if user_signed_in? %>
-        <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+        <small><%= link_to('Logout', destroy_user_session_path, method: :delete) %></small>
       <% else %>
-        <%= link_to('Login', new_user_session_path)  %>
+        <small><%= link_to('Login', new_user_session_path)  %></small>
       <% end %>
   </footer>
 </html>

@@ -18,21 +18,42 @@ class Course < ApplicationRecord
 
   def avg_difficulty
     if !reviews.empty?
-      self.reviews.collect{|r| r.difficulty}.inject(0){|sum,x| sum + x }/self.reviews.count.to_f
+      (self.reviews.collect{|r| r.difficulty}.inject(0){|sum,x| sum + x }/self.reviews.count.to_f).round(2)
     else
       "No reviews"
     end
   end
 
-  def self.no_reviews
-    Course.includes(:reviews).where( :reviews => { :id => nil } )
+  def instructor_quality
+    if !reviews.empty?
+      (self.reviews.collect{|r| r.instructor_quality}.inject(0){|sum,x| sum + x }/self.reviews.count.to_f).round(2)
+    else
+      "No reviews"
+    end
   end
 
-  def self.first_ten
-    limit(10)
+  def work_amount
+    if !reviews.empty?
+      (self.reviews.collect{|r| r.work_amount}.inject(0){|sum,x| sum + x }/self.reviews.count.to_f).round(2)
+    else
+      "No reviews"
+    end
   end
 
-  def self.recently_added
-    order(created_at: :desc)
+  def amount_learned
+    if !reviews.empty?
+      (self.reviews.collect{|r| r.amount_learned}.inject(0){|sum,x| sum + x }/self.reviews.count.to_f).round(2)
+    else
+      "No reviews"
+    end
   end
+
+  def overall_quality
+    if !reviews.empty?
+      (self.reviews.collect{|r| r.course_quality}.inject(0){|sum,x| sum + x }/self.reviews.count.to_f).round(2)
+    else
+      "No reviews"
+    end
+  end
+
 end

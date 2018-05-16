@@ -1,13 +1,10 @@
 <div class="album bg-light py-5 px-5 my-5">
   <h1>All Instructors</h1>
   <div class="row">
-    <% @instructors.each do |instructor| %>
-      <ol>
-        <li> <%= instructor.first_name%> <%=instructor.second_name%></li>
-      </ol>
-    <% end %>
-  </div>
-  <div class="col-md-3">
-    <%= link_to "New instructor", new_instructor_path, class: "btn btn-outline-dark" %>
+    <ol>
+      <% @instructors.each do |instructor| %>
+          <li> <%= instructor.first_name%> <%=instructor.second_name%> (<%= link_to "View Instructor", instructor_path(instructor), method: :get, class: "btn btn-sm btn-outline-secondary"%>)</li>
+      <% end %>
+    </ol>
   </div>
 </div>
