@@ -48,7 +48,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:difficulty, :course_quality, :instructor_quality, :amount_learned, :work_amountCourse, :user_id, :course_id)
+    params.require(:review).permit(:difficulty, :course_quality, :instructor_quality, :amount_learned, :work_amount, :comment, :user_id, :course_id)
   end
 
   def authorized?

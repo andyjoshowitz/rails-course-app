@@ -1,7 +1,7 @@
 class Instructor < ApplicationRecord
   has_many :courses
   accepts_nested_attributes_for :courses
-  validates_presence_of :first_name, :last_name
+  validates_presence_of :first_name, :second_name
 
   def self.most_popular_instructors
     joins(:courses).group(:id).order('count(courses.id) DESC')
