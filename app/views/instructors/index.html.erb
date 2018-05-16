@@ -3,7 +3,7 @@
   <div class="row">
     <ol>
       <% @instructors.each do |instructor| %>
-          <li> <%= instructor.first_name%> <%=instructor.second_name%> (<%= link_to "View Instructor", instructor_path(instructor), method: :get, class: "btn btn-sm btn-outline-secondary"%>)</li>
+          <li> <%= link_to instructor.second_name instructor_path(instructor), class: "btn btn-sm btn-outline-secondary"%><%= instructor.first_name%> <%=instructor.second_name%> (<%= link_to "View Instructor", instructor_path(instructor), method: :get, class: "btn btn-sm btn-outline-secondary"%>)</li>
       <% end %>
     </ol>
   </div>

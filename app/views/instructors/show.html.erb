@@ -4,14 +4,23 @@
   </div>
 
   <h3>Courses</h3>
-  <div class="row">
-    <% @instructor.courses.each do |activity| %>
+    <ol>
+      <% @instructor.courses.each do |course| %>
+        <li><h3><%= course.department%> - <%=course.title %></h3>
 
-      <%= render partial: "courses/course_details_for_index", locals: { location: course } %>
-
-    <% end %>
+        <p class="card-text"><%= course.description %></p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+            <%= button_to "View", course_path(course), method: :get, class: "btn btn-sm btn-outline-secondary" unless params[:action] == 'show' && params[:controller] == 'courses' %>
+            <%= button_to "Edit", edit_course_path(course), method: :get, class: "btn btn-sm btn-outline-secondary" if current_user.try(:admin?) || course.user_id == current_user.try(:id) %>
+          </div>
+          <small class="text-muted">Last updated: <br><%= course.updated_at.strftime("%m/%d/%Y") %></small>
+        </div>
+      <% end %></li>
+      </ol>
     <div class="col-md-3">
-      <%= link_to "Add an Course", new_instructor_course_path, class: "btn btn-outline-dark" %>
+      <%= link_to "Add a Course", new_instructor_course_path, class: "btn btn-outline-dark" %>
     </div>
   </div>
 </div>
+<div class="row">

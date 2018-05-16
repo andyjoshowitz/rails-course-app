@@ -21,10 +21,10 @@
     <br>
     <small><%= link_to "Homepage", welcome_home_path, class: "btn btn-outline-dark" %></small>
       |
-      <% if user_signed_in? %>
-        <small><%= link_to('Logout', destroy_user_session_path, method: :delete) %></small>
-      <% else %>
-        <small><%= link_to('Login', new_user_session_path)  %></small>
-      <% end %>
+    <% if user_signed_in? %>
+      <small><%= link_to('Logout', destroy_user_session_path, method: :delete) %></small>
+    <% else %>
+      <small><%= link_to('Login', new_user_session_path)  %></small>
+    <% end %>
   </footer>
 </html>

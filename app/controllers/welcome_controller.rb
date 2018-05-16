@@ -2,7 +2,8 @@ class WelcomeController < ApplicationController
 
   def home
     @courses = Course.all
-    @newest_courses = Course.recently_added.first_ten
+    @user = User.find_by(id: params[:user_id])
+    @profile = Profile.new
   end
 
 end

@@ -21,6 +21,7 @@ end
 
 def show
   @instructor = Instructor.find_by(id: params[:id])
+  @courses = @instructor.courses
 end
 
 def edit
@@ -46,7 +47,7 @@ end
 private
 
   def instructor_params
-    params.require(:instructor).permit(:user_id, :course_id, :first_name, :second_name)
+    params.require(:instructor).permit(:user_id, :first_name, :second_name, :course_attributes => [:id, :user_id, :title, :description, :department])
   end
 
 end
