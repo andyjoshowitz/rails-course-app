@@ -1,0 +1,66 @@
+<div class="album bg-light py-5 px-5 my-5">
+  <div class="row">
+    <div class="col">
+      <h1><%= @course.title %></h1>
+      <p><%= @course.description %></p>
+      <br><br>
+        <div class="col-md-3">
+          <%= link_to "Edit activity", edit_activity_path(@activity), class: "btn btn-outline-dark" if current_user.try(:admin?) || @activity.user_id == current_user.try(:id) %><br>
+          <%= link_to "All activities", activities_path, class: "btn btn-outline-dark" %>
+        </div>
+      </div>
+    </div>
+    <% if @activity.instructor %>
+      <%= render partial: 'locations/location_card', locals: { location: @activity.location } %>
+    <% end %>
+  </div>
+  <br>
+</div>
+
+<div class="album bg-light py-5 px-5 my-5">
+  <div class="row justify-content-between">
+    <div class="col">
+      <h3>Reviews</h3>
+    </div>
+    <div class="col-md-3">
+      <%= link_to "Write a review", new_activity_review_path(@activity), class: "btn btn-outline-dark" %>
+    </div>
+  </div>
+  <br>
+  <% @activity.reviews.each do |review| %>
+    <div class="review-box card rounded">
+
+      <div class="card-header">
+
+        <span class="star fa fa-star <%= "checked" if review.rating > 0 %>"></span>
+        <span class="star fa fa-star <%= "checked" if review.rating > 1 %>"></span>
+        <span class="star fa fa-star <%= "checked" if review.rating > 2 %>"></span>
+        <span class="star fa fa-star <%= "checked" if review.rating > 3 %>"></span>
+        <span class="star fa fa-star <%= "checked" if review.rating > 4 %>"></span>
+        <%= review.title %>
+      </div>
+      <div class="card-body">
+        <div class="comment-box">
+          <p><%= review.comment %></p>
+        </div>
+        <div class="card-footer">
+          <p><%= review.user.email %></p>
+          <p><%= review.updated_at.strftime("%m/%d/%Y") %></p>
+        </div>
+      </div>
+    </div>
+    <% if current_user == review.user %>
+    <div class="row justify-content-between">
+      <div class="col">
+        <%= link_to "Edit your review", edit_activity_review_path(id: review.id, activity_id: @activity.id), class: "btn btn-outline-dark" %>
+      </div>
+      <div class="col-md-3">
+        <%= link_to "Delete your review", activity_review_path(@activity, review), :method => :delete, class: "btn btn-outline-danger" %>
+      </div>
+    </div>
+
+    <% end %>
+    <br><br>
+
+  <% end %>
+</div

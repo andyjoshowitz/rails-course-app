@@ -1,0 +1,67 @@
+<%= form_for course do |f| %>
+  <% if course.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(course.errors.count, "error") %> prohibited this activity from being saved:</h2>
+            <ul>
+                <% <%= form_for activity do |f| %>
+  <% if course.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+            <ul>
+                <% course.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <div class="form-group">
+      <label>Title</label><br>
+      <%= f.text_field :title, class: "form-control" %><br>
+    </div>
+    <div class="form-group">
+      <label>Department</label><br>
+      <%= f.text_area :department, class: "form-control" %><br>
+    </div>
+    <div class="form-group">
+      <label>Description</label><br>
+      <%= f.text_area :description, class: "form-control" %><br>
+    </div>
+    <% if !course.id || current_user.admin? %>
+      <fieldset>
+        <legend>Instructor</legend>
+        <%= f.fields_for :instructor do |instructor_fields| %>
+        <%= instructor_fields.hidden_field :user_id, value: current_user.id %>
+        <div class="form-group">
+          <label>First Name</label><br>
+          <%= instructor_fields.text_field :first_name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label><br>
+          <%= instructor_fields.text_field :last_name, class: "form-control" %>
+        </div>
+        <% end %>
+      </fieldset>
+    <% end %>
+    <br>
+    <legend>Categories</legend><br>
+    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :title) do |b| %>
+      <%= b.label(class: "label-checkbox") { b.check_box + b.object.title } %>
+    <% end %>
+    <br>
+    <%= f.submit class: "btn btn-outline-dark" %>
+
+  <% end %>
+  <br>
+
+   <legend>Categories</legend><br>
+   <%= f.collection_check_boxes(:category_ids, Category.all, :id, :title) do |b| %>
+     <%= b.label(class: "label-checkbox") { b.check_box + b.object.title } %>
+   <% end %>
+   <br>
+   <%= f.submit class: "btn btn-outline-dark" %>
+
+ <% end %>
+ <br>
+ <%= button_to "Delete Activity", activity, :method => :delete, class: "btn btn-outline-danger" if !!activity.id && (current_user.try(:admin?) || current_user.id == activity.user_id) %>
