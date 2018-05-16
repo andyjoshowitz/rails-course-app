@@ -1,0 +1,8 @@
+<div class="album bg-light py-5 px-5 my-5">
+  <h1>All Instructors</h1>
+  <div class="row">
+    <% @instructors.each do |instructor| %>
+      <%= render partial: "instructor_card", locals: {location: location} %>
+    <% end %>
+  </div>
+</div>
