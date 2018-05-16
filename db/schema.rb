@@ -10,20 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_16_015341) do
+ActiveRecord::Schema.define(version: 2018_05_16_122945) do
 
-  create_table "courses", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.string "department"
-    t.integer "course_number"
-    t.integer "users_id"
-    t.integer "instructors_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["instructors_id"], name: "index_courses_on_instructors_id"
-    t.index ["users_id"], name: "index_courses_on_users_id"
-  end
+# Could not dump table "courses" because of following StandardError
+#   Unknown type 'belong_to' for column 'instructors'
 
   create_table "instructors", force: :cascade do |t|
     t.string "first_name"
