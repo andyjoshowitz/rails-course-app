@@ -56,7 +56,7 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:user_id, :title, :description, :suggested_duration, :category_ids => [], location_attributes: [:user_id, :street_address_1, :street_address_2, :city, :state, :zip_code, :country])
+    params.require(:course).permit(:user_id, :title, :description, :department, instructor_attributes: [:user_id, :first_name, :second_name])
   end
 
   def authorize

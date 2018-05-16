@@ -8,13 +8,13 @@
             </ul>
         </div>
     <% end %>
-<h2>Review of <%= @activity.title %></h2>
-<%= form_for([ :activity, review]) do |f| %>
+<h2>Review of <%= @course.title %></h2>
+<%= form_for([ :course, review]) do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.hidden_field :activity_id, value: activity.id %>
+  <%= f.hidden_field :course_id, value: course.id %>
   <label>Title</label><br>
   <%= f.text_field :title, class: "form-control" %><br>
-  <label>How many stars would you give this activity? (Enter 1 - 5)</label>
+  <label>How many stars would you give this course? (Enter 1 - 5)</label>
   <%= f.text_field :rating, class: "form-control" %><br>
 
   <label>Comments</label><br>
@@ -24,7 +24,7 @@
       <%= f.submit class: "btn btn-outline-dark" %>
     </div>
     <div class="col-md-3">
-      <%= link_to "Back to activity", activity_path(@activity), class: "btn btn-outline-dark" %>
+      <%= link_to "Back to course", course_path(@course), class: "btn btn-outline-dark" %>
     </div>
   </div>
 <% end %>

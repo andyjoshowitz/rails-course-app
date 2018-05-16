@@ -49,24 +49,8 @@ end
 
 private
 
-#def location_params
-#  params.require(:location).permit(
-#    :user_id,
-#    :street_address_1,
-#    :street_address_2,
-#    :city,
-#    :state,
-#    :zip_code,
-#    :country,
-#    :activities_attributes => [
-#      :id,
-#      :user_id,
-#      :title,
-#      :description,
-#      :suggested_duration,
-#      :category_ids => []
-#    ]
-#  )
-#end
+  def instructor_params
+    params.require(:instructor).permit(:user_id, :course_id, :first_name, :second_name)
+  end
 
 end
