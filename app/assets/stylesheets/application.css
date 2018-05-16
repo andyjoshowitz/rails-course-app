@@ -29,7 +29,7 @@
 
   body {
     position: relative;
-    margin: 0;
+    margin: 1rem;
     padding-bottom: 6rem;
     min-height: 100%;
     background-color: #e3eeef;

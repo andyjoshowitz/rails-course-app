@@ -1,20 +1,18 @@
 <div class="album bg-light py-5 px-5 my-5">
   <div class="row">
     <div class="col">
-      <h1><%= @course.title %></h1>
+      <h1><%= @course.title %> (<%= @course.department %>)</h1>
+      <% if @course.instructor %>
+        <h3>Instructor: <%= @course.instructor.first_name %> <%= @course.instructor.second_name %></h3>
+      <% end %>
       <p><%= @course.description %></p>
-      <br><br>
         <div class="col-md-3">
           <%= link_to "Edit course", edit_course_path(@course), class: "btn btn-outline-dark" if current_user.try(:admin?) || @course.user_id == current_user.try(:id) %><br>
           <%= link_to "All courses", courses_path, class: "btn btn-outline-dark" %>
         </div>
       </div>
     </div>
-    <% if @course.instructor %>
-      <%= render partial: 'instructor/instructor_card', locals: { location: @course.instructor } %>
-    <% end %>
   </div>
-  <br>
 </div>
 
 <div class="album bg-light py-5 px-5 my-5">

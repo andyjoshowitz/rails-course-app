@@ -8,8 +8,6 @@ end
 def new
   @instructor = Instructor.new
   @instructor.courses.build()
-  @instructor.courses.build()
-  @instructor.courses.build()
 end
 
 def create
@@ -27,8 +25,6 @@ end
 
 def edit
   @instructor = Instructor.find_by(id: params[:id])
-  @instructor.courses.build()
-  @instructor.courses.build()
   @instructor.courses.build()
 end
 

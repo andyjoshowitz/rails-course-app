@@ -1,0 +1,11 @@
+<!-- <%= render partial: "profiles/form", locals: { profile: @profile, user: @user } %> -->
+<div class="album bg-light py-5 px-5 my-5">
+  <%= form_for @profile, url: user_profile_path do |f| %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+    <label>Username</label><br>
+    <%= f.text_field :username, class: "form-control" %>
+
+    <%= f.submit class: "btn btn-outline-dark" %>
+
+  <% end %>
+</div>

@@ -4,7 +4,6 @@ class ProfilesController < ApplicationController
  def show
    @user = User.find_by(id: params[:user_id])
    @profile = @user.try(:profile)
-  # @interests = @user.try(:profile).try(:categories)
  end
 
  def new

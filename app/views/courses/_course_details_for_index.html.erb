@@ -6,22 +6,6 @@
           <li><h3><%= course.department%>-<%=course.title %></h3>
 
           <p class="card-text"><%= course.description %></p>
-          <p class="card-text">Instructor: <%= course.instructor %></p>
-          <% if course.reviews == nil %>
-            No reviews
-          <% else %>
-              <% course.avg_difficulty.floor.times do %>
-              <span class="star fa fa-star checked"></span>
-            <% end %>
-              <% if course.avg_difficulty - course.avg_difficulty.floor > 0.25 &&  course.avg_difficulty - course.avg_difficulty.floor < 0.75 %>
-                <span class="fas fa-star-half   checked"></span>
-            <% elsif course.avg_difficulty - course.avg_difficulty.floor > 0.75 %>
-                <sp  an class="star fa fa-star checked"></span>
-            <% end %>
-            <% (5 - course.avg_difficulty).floor.times do %>
-              <span class="star fa fa-star"></span>
-            <% end %>
-          <% end %>
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
             <%= button_to "View", course_path(course), method: :get, class: "btn btn-sm btn-outline-secondary" unless params[:action] == 'show' && params[:controller] == 'courses' %>
@@ -31,13 +15,6 @@
         </div>
         <% end %></li>
         </ol>
-        <h3>Options:</h3>
-        <ul>
-          <li><%= link_to "New course", new_course_path, class: "btn btn-outline-dark" %></li>
-          <li><%= link_to "See all courses", courses_path, class: "btn btn-outline-dark my-2" %></li>
-          <li><%= link_to "New instructor", new_instructor_path, class: "btn btn-outline-dark" %></li>
-          <li><%= link_to "See all instructors", instructors_path, class: "btn btn-outline-dark my-2" %></li>
-        </ul>
     </div>
   </div>
 </div>
