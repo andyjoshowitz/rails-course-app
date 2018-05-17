@@ -1,7 +1,6 @@
 <h1>All Instructors</h1>
   <ol>
     <% @instructors.each do |instructor| %>
-      <%instructor.full_name %>
-        <li> <%= link_to instructor.full_name instructor_path(instructor), class: "btn btn-sm btn-outline-secondary"%><%= instructor.first_name%> <%=instructor.second_name%> (<%= link_to "View Instructor", instructor_path(instructor), method: :get, class: "btn btn-sm btn-outline-secondary"%>)</li>
+        <li> <%= link_to instructor.full_name(instructor.first_name, instructor.second_name), instructor_path(instructor), class: "btn btn-sm btn-outline-secondary"%></li>
     <% end %>
   </ol>
