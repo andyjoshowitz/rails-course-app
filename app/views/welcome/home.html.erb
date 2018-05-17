@@ -1,13 +1,5 @@
 <main role="main">
-      <div class="album py-5 bg-light mb-5">
-        <div class="container">
-          <div class="row justify-content-md-center">
-            <h1>Welcome to Course Reviewer!</h1>
-          </div>
-          <br>
-          <div class="row">
-            <%= render partial: "courses/course_details_for_index", collection: @newest_courses, as: :course %>
-          </div>
-        </div>
-      </div>
-    </main>
+  <h1>Welcome to Course Reviewer!</h1>
+  <br>
+  <%= render partial: "courses/course_details_for_index", collection: @newest_courses, as: :course %>
+</main>
