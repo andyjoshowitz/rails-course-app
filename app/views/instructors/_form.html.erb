@@ -1,4 +1,3 @@
-<%= form_for @instructor do |f| %>
 <% if @instructor.errors.any? %>
       <div id="error_explanation">
           <h2><%= pluralize(@instructor.errors.count, "error") %> prohibited this instructor from being saved:</h2>
@@ -9,34 +8,30 @@
           </ul>
       </div>
   <% end %>
-<legend>Instructor</legend>
-<%= f.hidden_field :user_id, value: current_user.id %>
-<div class="form-group">
-  <label>First Name</label><br>
-  <%= f.text_field :first_name, class: "form-control" %>
-</div>
-<div class="form-group">
-  <label>Last Name</label><br>
-  <%= f.text_field :second_name, class: "form-control" %>
-</div>
 
+<%= form_for @instructor do |f| %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.label :first_name %><br>
+  <%= f.text_field :first_name %>
+  <br>
+  <%= f.label :second_name, "Last Name" %><br>
+  <%= f.text_field :second_name %>
+  <br>
   <fieldset>
-    <legend>Add Courses</legend>
+    <legend>Add Course (optional)</legend>
     <%= f.fields_for :courses do |course_fields| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
-    <label>New Course</label>
-    <div class="form-group">
       <%= course_fields.label :title %><br>
-      <%= course_fields.text_field :title, class: "form-control" %>
-    </div>
-    <div class="form-group">
+      <%= course_fields.text_field :title %>
+      <br>
       <%= course_fields.label :department %><br>
-      <%= course_fields.text_field :department, class: "form-control" %>
-    </div>
-    <div class="form-group">
+      <%= course_fields.text_field :department%>
+      <br>
+      <%= course_fields.label :course_number %><br>
+      <%= course_fields.text_field :course_number%>
+      <br>
       <%= course_fields.label :description %><br>
-      <%= course_fields.text_area :description, class: "form-control" %>
-    </div>
+      <%= course_fields.text_area :description %>
     <% end %>
   </fieldset>
 

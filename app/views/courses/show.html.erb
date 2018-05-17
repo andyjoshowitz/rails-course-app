@@ -1,5 +1,5 @@
 <div class="course-header">
-  <h1><%= @course.title %> (<%= @course.department %>)</h1>
+  <h1><%= @course.title %> (<%= @course.department %>-<%= @course.course_number %>)</h1>
 </div>
 <% if @course.instructor %>
   <h3>Instructor: <%= @course.instructor%></h3>
@@ -12,11 +12,6 @@
 <h3>Reviews</h3>
 
 <%= link_to "Write a review", new_course_review_path(@course), class: "btn btn-outline-dark" %>
-
-<% if !params[:course].blank? %>
-  <% @reviews = Review.where(course: params[:course]) %>
-<% end %>
-
 
     <p>Overall Ratings</p>
     <ul>

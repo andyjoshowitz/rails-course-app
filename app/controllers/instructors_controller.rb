@@ -47,7 +47,7 @@ end
 private
 
   def instructor_params
-    params.require(:instructor).permit(:user_id, :first_name, :second_name, :course_attributes => [:id, :user_id, :title, :description, :department])
+    params.require(:instructor).permit(:user_id, :first_name, :second_name, :course_attributes => [:id, :user_id, :title, :description, :department, :course_number])
   end
 
 end

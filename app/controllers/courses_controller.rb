@@ -21,21 +21,20 @@ class CoursesController < ApplicationController
     if @course.save
       redirect_to course_path(@course)
     else
-      flash.now[:alert] = "You must enter a name and description of the activity"
+      flash.now[:alert] = "You must enter a name and description of the course"
       render "new"
     end
   end
 
   def edit
     @course = Course.find_by(id: params[:id])
-    @course.build_location() unless @course.location
   end
 
   def update
     @course = Course.find_by(id: params[:id])
     @course.update(course_params)
     if @course.save
-      redirect_to course_path(@activity)
+      redirect_to course_path(@course)
     else
       render "edit"
     end
