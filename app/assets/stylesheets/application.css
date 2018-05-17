@@ -15,13 +15,23 @@
  /* Custom bootstrap variables must be set or imported *before* bootstrap.*/
  @import "bootstrap";
  @import "font-awesome";
- @import url('https://fonts.googleapis.com/css?family=Mallanna|Montserrat|Open+Sans|Quicksand');
+ @import url('https://fonts.googleapis.com/css?family=Mallanna|Montserrat|Open+Sans|Quicksand|BebasNeueRegular');
 
 
 // font-family: 'Open Sans', sans-serif;
 // font-family: 'Montserrat', sans-serif;
 // font-family: 'Quicksand', sans-serif;
 // font-family: 'Mallanna', sans-serif;
+// font-family: 'BebasNeueRegular', sans-serif;
+
+.BNR{
+  font-family: 'BebasNeueRegular';
+}
+
+@font-face{
+  font-family: 'BebasNeueRegular';
+  src: url('../fonts/BebasNeueRegular.otf');
+}
 
  html {
    height: 100%;
@@ -33,7 +43,7 @@
     padding-bottom: 6rem;
     min-height: 100%;
     background-color: #90b8cb;
-    font-family: 'Mallanna', sans-serif;
+    font-family: 'BebasNeueRegular';
     // font-family: 'Montserrat', sans-serif;
     // background-color: #d7e6e8
   }
@@ -83,6 +93,13 @@
 
 .fas.checked {
   color: orange;
+}
+
+.course-header {
+  font-family: 'BebasNeueRegular';
+  font-size: 20px;
+  color: #ffffff;
+  margin-bottom: 15px;
 }
 
 /////////////FOOTER////////////////

@@ -1,5 +1,6 @@
-<h1><%= @course.title %> (<%= @course.department %>)</h1>
-
+<div class="course-header">
+  <h1><%= @course.title %> (<%= @course.department %>)</h1>
+</div>
 <% if @course.instructor %>
   <h3>Instructor: <%= @course.instructor.first_name %> <%= @course.instructor.second_name %></h3>
 <% end %>
