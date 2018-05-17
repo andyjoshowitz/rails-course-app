@@ -8,6 +8,18 @@ class Course < ApplicationRecord
   validates :department, length: {maximum: 4}
   validates :course_number, length: { maximum: 3}
 
+  def self.first_three
+    limit(3)
+  end
+
+  def self.recently_added
+    order(created_at: :desc)
+  end
+
+  def full_title(title, department, course_number)
+    self.title + " " + "(" + self.department + "-" + self.course_number.to_s + ")"
+  end
+
   def instructor_attributes=(instructor_attributes)
     self.build_instructor(instructor_attributes)
   end

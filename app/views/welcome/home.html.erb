@@ -1,5 +1,17 @@
 <main role="main">
   <h1>Welcome to Course Reviewer!</h1>
   <br>
-  <%= render partial: "courses/course_details_for_index" %>
+  <h2>Recently Added Courses</h2>
+  <ol>
+    <% @newest_courses.each do |course| %>
+      <li> <%= link_to course.full_title(course.title, course.department, course.course_number), course_path(course)%></li>
+    <% end %>
+  </ol>
+
+  <h2>Most Popular Courses</h2>
+  <ol>
+    <% @most_popular_courses.each do |course| %>
+      <li> <%= link_to course.full_title(course.title, course.department, course.course_number), course_path(course)%></li>
+    <% end %>
+  </ol>
 </main>
