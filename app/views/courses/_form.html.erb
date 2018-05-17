@@ -11,18 +11,19 @@
     <% end %>
 
     <%= f.hidden_field :user_id, value: current_user.id %>
-    <div class="form-group">
-      <label>Title</label><br>
-      <%= f.text_field :title, class: "form-control" %><br>
-    </div>
-    <div class="form-group">
-      <label>Department</label><br>
-      <%= f.text_field :department, class: "form-control" %><br>
-    </div>
-    <div class="form-group">
-      <label>Description</label><br>
-      <%= f.text_area :description, class: "form-control" %><br>
-    </div>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+      <br>
+      <%= f.label :Department %><br>
+      <%= f.text_field :department %>
+      <br>
+      <%= f.label :course_number %><br>
+      <%= f.text_field :course_number %>
+      <br>
+      <%= f.label :Description %><br>
+      <%= f.text_area :description %>
+      <br>
+
     <% if !course.id || current_user.admin? %>
       <fieldset>
         <legend>Instructor</legend>
