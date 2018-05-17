@@ -1,26 +1,16 @@
-<div class="album bg-light py-5 px-5 my-5">
-  <div class="row justify-content-between">
-    <h1><%= @instructor.first_name%> <%=@instructor.second_name%></h1>
-  </div>
+<h1><%= @instructor.first_name%> <%=@instructor.second_name%></h1>
 
   <h3>Courses</h3>
     <ol>
       <% @instructor.courses.each do |course| %>
         <li><h3><%= course.department%> - <%=course.title %></h3>
-
         <p class="card-text"><%= course.description %></p>
-        <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
             <%= button_to "View", course_path(course), method: :get, class: "btn btn-sm btn-outline-secondary" unless params[:action] == 'show' && params[:controller] == 'courses' %>
             <%= button_to "Edit", edit_course_path(course), method: :get, class: "btn btn-sm btn-outline-secondary" if current_user.try(:admin?) || course.user_id == current_user.try(:id) %>
           </div>
           <small class="text-muted">Last updated: <br><%= course.updated_at.strftime("%m/%d/%Y") %></small>
-        </div>
       <% end %></li>
       </ol>
-    <div class="col-md-3">
+
       <%= link_to "Add a Course", new_instructor_course_path, class: "btn btn-outline-dark" %>
-    </div>
-  </div>
-</div>
-<div class="row">
