@@ -6,7 +6,7 @@
 <% end %>
 
 <p><%= @course.description %></p>
-    <%= link_to "Edit course", edit_course_path(@course),  if current_user.try(:admin?) || @course.user_id == current_user.try(:id) %><br>
+    <%= link_to "Edit course", edit_course_path(@course) if current_user.try(:admin?) || @course.user_id == current_user.try(:id) %><br>
     <%= link_to "All courses", courses_path, class: "btn btn-outline-dark" %>
 
 <h3>Reviews</h3>

@@ -39,4 +39,4 @@
     <%= f.submit %>
 <% end %>
 <br>
-<%= button_to "Delete Course", course, :method => :delete, if !!course.id && (current_user.try(:admin?) || current_user.id == course.user_id) %>
+<%= button_to "Delete Course", course, :method => :delete, class: "btn btn-outline-danger" if !!course.id && (current_user.try(:admin?) || current_user.id == course.user_id) %>
