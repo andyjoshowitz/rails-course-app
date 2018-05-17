@@ -2,7 +2,7 @@
   <h1><%= @course.title %> (<%= @course.department %>)</h1>
 </div>
 <% if @course.instructor %>
-  <h3>Instructor: <%= @course.instructor.first_name %> <%= @course.instructor.second_name %></h3>
+  <h3>Instructor: <%= @course.instructor%></h3>
 <% end %>
 
 <p><%= @course.description %></p>
@@ -12,6 +12,12 @@
 <h3>Reviews</h3>
 
 <%= link_to "Write a review", new_course_review_path(@course), class: "btn btn-outline-dark" %>
+
+<% if !params[:course].blank? %>
+  <% @reviews = Review.where(course: params[:course]) %>
+<% end %>
+
+
     <p>Overall Ratings</p>
     <ul>
       <li> Average Difficulty: <%= @course.avg_difficulty %></li>
@@ -25,17 +31,12 @@
 
   <% @course.reviews.each do |review| %>
     <div class="review-box card rounded">
-      <div class="card-header">
-        <h3>From <%= @course.user.username %>:</h3>
-      </div>
-      <div class="card-body">
-          <h4>Ratings:</h4>
+      <h3>From <%= @course.user.username %>:</h3>
+        <h4>Ratings</h4>
           <p>Course Difficulty: <%=review.difficulty%> | Instructor Quality: <%=review.instructor_quality%> | Amount Learned: <%=review.amount_learned%></li> | Workload: <%=review.work_amount%></li> | Course Quality: <%=review.course_quality%></p>
-          <p>Comment: <%= review.comment %></p>
-        <div class="card-footer">
-          <p><%= review.user.email %> | <%= review.updated_at.strftime("%m/%d/%Y") %></p>
-        </div>
-      </div>
+        <h4>Comment</h4>
+          <p><%= review.comment %></p>
+        <p><%= review.user.email %> | <%= last_updated review %></p>
     </div>
     <% if current_user == review.user %>
       <%= link_to "Edit your review", edit_course_review_path(id: review.id, course_id: @course.id), class: "btn btn-outline-dark" %>

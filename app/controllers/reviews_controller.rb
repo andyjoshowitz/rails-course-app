@@ -1,7 +1,9 @@
 class ReviewsController < ApplicationController
   before_action :require_login
   skip_before_action :require_login, only: [:index, :show]
-   before_action :authorize, only: [:edit, :update, :destroy]
+  before_action :authorize, only: [:edit, :update, :destroy]
+
+  helper_method :params
 
   def index
     @reviews = Review.where(course_id = params[:id])

@@ -1,2 +1,2 @@
   <h1>Courses</h1>
-    <%= render partial: "courses/course_details_for_index", collection: @courses, as: :course %>
+    <%= render partial: "courses/course_details_for_index", locals: {course: @course} %>

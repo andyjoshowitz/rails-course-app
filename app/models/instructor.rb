@@ -7,6 +7,9 @@ class Instructor < ApplicationRecord
     joins(:courses).group(:id).order('count(courses.id) DESC')
   end
 
+  def full_name
+    self.first_name + self.second_name
+  end
 
   def courses_attributes=(courses_attributes)
     courses_attributes.each do |i, courses_attributes|
