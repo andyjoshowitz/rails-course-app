@@ -6,11 +6,11 @@
         <li><h3><%= course.department%> - <%=course.title %></h3>
         <p class="card-text"><%= course.description %></p>
           <div class="btn-group">
-            <%= button_to "View", course_path(course), method: :get, class: "btn btn-sm btn-outline-secondary" unless params[:action] == 'show' && params[:controller] == 'courses' %>
-            <%= button_to "Edit", edit_course_path(course), method: :get, class: "btn btn-sm btn-outline-secondary" if current_user.try(:admin?) || course.user_id == current_user.try(:id) %>
+            <%= button_to "View", course_path(course), method: :get, unless params[:action] == 'show' && params[:controller] == 'courses' %>
+            <%= button_to "Edit", edit_course_path(course), method: :get, if current_user.try(:admin?) || course.user_id == current_user.try(:id) %>
           </div>
           <small class="text-muted">Last updated: <br><%= course.updated_at.strftime("%m/%d/%Y") %></small>
       <% end %></li>
       </ol>
 
-      <%= link_to "Add a Course", new_instructor_course_path, class: "btn btn-outline-dark" %>
+      <%= link_to "Add a Course", new_instructor_course_path %>

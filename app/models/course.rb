@@ -5,8 +5,8 @@ class Course < ApplicationRecord
 
   validates_presence_of :title, :description, :department, :course_number
   validates :title, length: { maximum: 60 }
-  validates :department, length: {maximum: 4}
-  validates :course_number, length: { maximum: 3}
+  validates :department, length: {is: 4}
+  validates :course_number, length: { is: 3}
 
   def self.first_three
     limit(3)

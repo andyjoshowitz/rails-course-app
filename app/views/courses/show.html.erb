@@ -6,12 +6,12 @@
 <% end %>
 
 <p><%= @course.description %></p>
-    <%= link_to "Edit course", edit_course_path(@course), class: "btn btn-outline-dark" if current_user.try(:admin?) || @course.user_id == current_user.try(:id) %><br>
+    <%= link_to "Edit course", edit_course_path(@course),  if current_user.try(:admin?) || @course.user_id == current_user.try(:id) %><br>
     <%= link_to "All courses", courses_path, class: "btn btn-outline-dark" %>
 
 <h3>Reviews</h3>
 
-<%= link_to "Write a review", new_course_review_path(@course), class: "btn btn-outline-dark" %>
+<%= link_to "Write a review", new_course_review_path(@course)%>
 
     <p>Overall Ratings</p>
     <ul>
@@ -34,9 +34,9 @@
         <p><%= review.user.email %> | <%= last_updated review %></p>
     </div>
     <% if current_user == review.user %>
-      <%= link_to "Edit your review", edit_course_review_path(id: review.id, course_id: @course.id), class: "btn btn-outline-dark" %>
+      <%= link_to "Edit your review", edit_course_review_path(id: review.id, course_id: @course.id) %>
        |
-      <%= link_to "Delete your review", course_review_path(@course, review), :method => :delete, class: "btn btn-outline-danger" %>
+      <%= link_to "Delete your review", course_review_path(@course, review), :method => :delete %>
     <% end %>
     <br><br>
   <% end %>
