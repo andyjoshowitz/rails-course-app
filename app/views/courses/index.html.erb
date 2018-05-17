@@ -1,8 +1,2 @@
-<div class="album bg-light py-5 px-5 my-5">
   <h1>Courses</h1>
-  <div class="row">
-        <%= render partial: "courses/course_details_for_index", collection: @courses, as: :course %>
-  </div>
-
-  <%= link_to "Homepage", welcome_home_path, class: "btn btn-outline-dark" %>
-</div>
+    <%= render partial: "courses/course_details_for_index", collection: @courses, as: :course %>

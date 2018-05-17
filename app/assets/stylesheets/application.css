@@ -32,7 +32,7 @@
     margin: 1rem;
     padding-bottom: 6rem;
     min-height: 100%;
-    background-color: #e3eeef;
+    background-color: #90b8cb;
     font-family: 'Mallanna', sans-serif;
     // font-family: 'Montserrat', sans-serif;
     // background-color: #d7e6e8
@@ -74,13 +74,11 @@
 
  .review-box {
    border: 1px solid #388087;
+   padding: 1rem;
  }
 
  .star.checked {
     color: orange;
-}
-.half-star {
-
 }
 
 .fas.checked {
@@ -96,39 +94,8 @@
    left: 0;
    padding: 1rem;
    margin-top: 1rem;
-   background-color: #383838;
+   background-color: #ffffff;
    color: white;
    text-align: center;
    overflow: hidden;
-}
-
-////////////Trying to get cols equal height (SHOULD DEFAULT TO THIS!)/////////
- .row.match-my-cols {
-    overflow: hidden;
-}
-
-.row.match-my-cols [class*="col"]{
-    margin-bottom: -99999px;
-    padding-bottom: 99999px;
-}
-
-.row-eq-height > [class^=col] {
-  display: flex;
-  flex-direction: column;
-}
-
-.row-eq-height > [class^=col]:last-of-type div {
-  margin: 10px;
-}
-
-.row-eq-height > [class^=col]:last-of-type div:first-of-type {
-  margin-top: 0;
-}
-
-.row-eq-height > [class^=col]:last-of-type div:last-of-type {
-  margin-bottom: 0;
-}
-
-.row-eq-height > [class^=col]:first-of-type .black {
-  flex-grow: 1;
 }

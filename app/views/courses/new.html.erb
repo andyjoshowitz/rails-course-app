@@ -1,10 +1,4 @@
-<div class="album bg-light py-5 px-5 my-5">
-  <div class="row">
-    <div class="col">
-      <h3>Create a new course</h3>
-      <%= link_to "Or add an instructor", new_instructor_path, class: "btn btn-outline-dark" %>
-    </div>
-  </div>
+<h3>Create a new course</h3>
+<%= link_to "Or add an instructor", new_instructor_path, class: "btn btn-outline-dark" %>
 
   <%= render partial: "form", locals: { course: @course} %>
-</div>

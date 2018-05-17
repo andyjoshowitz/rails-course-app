@@ -1,25 +1,16 @@
-<div class="album bg-light py-5 px-5 my-5">
-  <div class="row">
-    <div class="col">
-      <h1><%= @course.title %> (<%= @course.department %>)</h1>
-      <% if @course.instructor %>
-        <h3>Instructor: <%= @course.instructor.first_name %> <%= @course.instructor.second_name %></h3>
-      <% end %>
-      <p><%= @course.description %></p>
-        <div class="col-md-3">
-          <%= link_to "Edit course", edit_course_path(@course), class: "btn btn-outline-dark" if current_user.try(:admin?) || @course.user_id == current_user.try(:id) %><br>
-          <%= link_to "All courses", courses_path, class: "btn btn-outline-dark" %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<h1><%= @course.title %> (<%= @course.department %>)</h1>
 
-<div class="album bg-light py-5 px-5 my-5">
-  <div class="row justify-content-between">
-    <div class="col">
-      <h3>Reviews</h3>
-    </div>
+<% if @course.instructor %>
+  <h3>Instructor: <%= @course.instructor.first_name %> <%= @course.instructor.second_name %></h3>
+<% end %>
+
+<p><%= @course.description %></p>
+    <%= link_to "Edit course", edit_course_path(@course), class: "btn btn-outline-dark" if current_user.try(:admin?) || @course.user_id == current_user.try(:id) %><br>
+    <%= link_to "All courses", courses_path, class: "btn btn-outline-dark" %>
+
+<h3>Reviews</h3>
+
+<%= link_to "Write a review", new_course_review_path(@course), class: "btn btn-outline-dark" %>
     <p>Overall Ratings</p>
     <ul>
       <li> Average Difficulty: <%= @course.avg_difficulty %></li>
@@ -28,39 +19,27 @@
       <li> Amount Learned: <%= @course.amount_learned %></li>
       <li> Overall Quality: <%= @course.overall_quality %></li>
     </ul>
-  </div>
+
   <br>
+
   <% @course.reviews.each do |review| %>
     <div class="review-box card rounded">
-
       <div class="card-header">
         <h3>From <%= @course.user.username %>:</h3>
       </div>
       <div class="card-body">
-        <div class="ratings">
           <h4>Ratings:</h4>
           <p>Course Difficulty: <%=review.difficulty%> | Instructor Quality: <%=review.instructor_quality%> | Amount Learned: <%=review.amount_learned%></li> | Workload: <%=review.work_amount%></li> | Course Quality: <%=review.course_quality%></p>
-        </div>
-        <div class="comment-box">
           <p>Comment: <%= review.comment %></p>
-        </div>
         <div class="card-footer">
           <p><%= review.user.email %> | <%= review.updated_at.strftime("%m/%d/%Y") %></p>
         </div>
       </div>
     </div>
     <% if current_user == review.user %>
-    <div class="row justify-content-between">
-      <div class="col">
-        <%= link_to "Edit your review", edit_course_review_path(id: review.id, course_id: @course.id), class: "btn btn-outline-dark" %>
-      </div>
-      <div class="col-md-3">
-        <%= link_to "Delete your review", course_review_path(@course, review), :method => :delete, class: "btn btn-outline-danger" %>
-      </div>
-    </div>
-
+      <%= link_to "Edit your review", edit_course_review_path(id: review.id, course_id: @course.id), class: "btn btn-outline-dark" %>
+       |
+      <%= link_to "Delete your review", course_review_path(@course, review), :method => :delete, class: "btn btn-outline-danger" %>
     <% end %>
     <br><br>
-
   <% end %>
-</div
