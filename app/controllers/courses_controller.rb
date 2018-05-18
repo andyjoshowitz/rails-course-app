@@ -28,6 +28,7 @@ class CoursesController < ApplicationController
 
   def edit
     @course = Course.find_by(id: params[:id])
+    @course.build_instructor() unless @course.instructor
   end
 
   def update
@@ -49,7 +50,21 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:user_id, :title, :description, :department, :course_number, instructor_attributes: [:user_id, :first_name, :second_name])
+    params.require(:course).permit(:id,
+      :user_id,
+      :title,
+      :description,
+      :department,
+      :course_number,
+      instructor_attributes: [
+        :id,
+        :user_id,
+        :first_name,
+        :second_name,
+        courses: [
+        ]
+      ]
+    )
   end
 
   def authorize

@@ -8,6 +8,18 @@ class Course < ApplicationRecord
   validates :department, length: {is: 4}
   validates :course_number, length: { is: 3}
 
+  def instructor_attributes=(instructor_attributes)
+    instructor_attributes.each do |instructor_attributes|
+      self.instructor.build(instructor_attributes)
+    end
+    self.instructor = Instructor.find_or_create_by(first_name: instructor.full_name(instructor.first_name, instructor.second_name))
+    self.instructor.update(instructor)
+  end
+
+  def course_identity(department, course_number)
+    self.department + "-" + self.course_number.to_s
+  end
+
   def self.first_three
     limit(3)
   end
@@ -18,10 +30,6 @@ class Course < ApplicationRecord
 
   def full_title(title, department, course_number)
     self.title + " " + "(" + self.department + "-" + self.course_number.to_s + ")"
-  end
-
-  def instructor_attributes=(instructor_attributes)
-    self.build_instructor(instructor_attributes)
   end
 
   def self.most_popular

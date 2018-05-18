@@ -14,25 +14,28 @@
       <%= f.label :title %><br>
       <%= f.text_field :title %>
       <br>
+      <br>
       <%= f.label :Department %><br>
-      <%= f.text_field :department %>
+      <%= f.text_field :department, placeholder: "4 letter abbreviation" %>
+      <br>
       <br>
       <%= f.label :course_number %><br>
-      <%= f.text_field :course_number %>
+      <%= f.text_field :course_number, placeholder: "must be 3 numbers" %>
+      <br>
       <br>
       <%= f.label :Description %><br>
       <%= f.text_area :description %>
       <br>
-
+      <br>
       <fieldset>
         <legend>Instructor</legend>
-        <%= f.fields_for :instructor do |instructor_fields| %>
-          <%= instructor_fields.hidden_field :user_id, value: current_user.id %>
-          <%= instructor_fields.label :first_name %><br>
-          <%= instructor_fields.text_field :first_name %>
+        <%= f.fields_for :instructors do |instructor| %>
+          <%= instructor.hidden_field :user_id, value: current_user.id %>
+          <%= instructor.label :first_name %><br>
+          <%= instructor.text_field :first_name %>
           <br>
-          <%= instructor_fields.label :second_name, "Last Name" %><br>
-          <%= instructor_fields.text_field :second_name %>
+          <%= instructor.label :second_name, "Last Name" %><br>
+          <%= instructor.text_field :second_name %>
         <% end %>
       </fieldset>
     <br>

@@ -6,13 +6,13 @@ def index
 end
 
 def new
-  @instructor = Instructor.new
+  @instructor = Instructor.new # Find or create for instructor
   @instructor.courses.build()
 end
 
 def create
-  @instructor = Instructor.new(instructor_params)
-  if @instructor.save
+  instructor = Instructor.create(instructor_params)
+  if instructor.save
     redirect_to @instructor
   else
     render "new"
@@ -32,6 +32,7 @@ end
 def update
   @instructor = Instructor.find_by(id: params[:id])
   @instructor.update(instructor_params)
+  @instructor.courses.update(course_params)
   if @instructor.save
     redirect_to instructor_path(@instructor)
   else
@@ -47,7 +48,19 @@ end
 private
 
   def instructor_params
-    params.require(:instructor).permit(:user_id, :first_name, :second_name, :course_attributes => [:id, :user_id, :title, :description, :department, :course_number])
+    params.require(:instructor).permit(
+      :user_id,
+      :first_name,
+      :second_name,
+      course_attributes: [
+        :id,
+        :user_id,
+        :title,
+        :description,
+        :department,
+        :course_number
+        ]
+      )
   end
 
 end

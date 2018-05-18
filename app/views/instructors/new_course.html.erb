@@ -9,20 +9,20 @@
       </div>
   <% end %>
 <%= form_for @instructor do |f| %>
-  <%= f.fields_for :courses, @instructor.courses.build do |course_fields| %>
-  <%= course_fields.hidden_field :user_id, value: current_user.id %>
+  <%= f.fields_for :courses, @instructor.courses.build do |course| %>
+  <%= course.hidden_field :user_id, value: current_user.id %>
   <h3>New Course for <%= @instructor.full_name(@instructor.first_name, @instructor.second_name)%> </h3>
-    <%= course_fields.label :title %><br>
-    <%= course_fields.text_field :title %>
+    <%= course.label :title %><br>
+    <%= course.text_field :title %>
     <br>
-    <%= course_fields.label :department %><br>
-    <%= course_fields.text_field :department %>
+    <%= course.label :department %><br>
+    <%= course.text_field :department %>
     <br>
-    <%= course_fields.label :course_number %><br>
-    <%= course_fields.text_field :course_number %>
+    <%= course.label :course_number %><br>
+    <%= course.text_field :course_number %>
     <br>
-    <%= course_fields.label :description %><br>
-    <%= course_fields.text_area :description %>
+    <%= course.label :description %><br>
+    <%= course.text_area :description %>
   <% end %>
   <br>
   <%= f.submit %>
