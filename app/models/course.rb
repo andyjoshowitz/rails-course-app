@@ -9,9 +9,7 @@ class Course < ApplicationRecord
   validates :course_number, length: { is: 3}
 
   def instructor_attributes=(instructor_attributes)
-    instructor_attributes.each do |instructor_attributes|
-      self.instructor.build(instructor_attributes)
-    end
+    self.build_instructor(instructor_attributes)
   end
 
   def course_identity(department, course_number)

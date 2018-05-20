@@ -12,9 +12,17 @@ class Instructor < ApplicationRecord
     end
   end
 
-  def course_attributes=(course)
-    course = Course.find_or_create_by(course_number: course_number)
-    self.courses << course
+  def courses_attributes=(courses_attributes)
+    courses_attributes.each do |i, course_attributes|
+      if !course_attributes[:title].blank? && !courses_attributes[:description].blank?
+        if course_attributes[:id].blank?
+          self.courses.build(course_attributes)
+        else
+          course = Course.find_by(id: course_attributes[:id])
+          course.update(course_attributes)
+        end
+      end
+    end
   end
 
   def full_name(first_name, second_name)

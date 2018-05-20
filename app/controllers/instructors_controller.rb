@@ -15,25 +15,12 @@ end
 def create
   @instructor = Instructor.new(instructor_params)
   if @instructor.save
-    redirect_to instructor_path(@instructor)
+    binding.pry
+    redirect_to @instructor
   else
-    render 'new'
+    render "new"
   end
 end
-
-#def create
-#  instructor = Instructor.find(first_name: params[:first_name] ) instructor_params
-#  if instructor
-#    instructor.update
-#  else
-#    instructor.create
-#  end
-#  if instructor.save
-#    redirect_to instructor_path(@instructor)
-#  else
-#    render "new"
-#  end
-#end
 
 def show
   @instructor = Instructor.find_by(id: params[:id])
@@ -48,7 +35,6 @@ end
 def update
   @instructor = Instructor.find_by(id: params[:id])
   @instructor.update(instructor_params)
-  #@instructor.courses.update(course_params)
   if @instructor.save
     redirect_to instructor_path(@instructor)
   else
