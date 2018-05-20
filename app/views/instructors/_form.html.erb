@@ -19,8 +19,8 @@
   <br>
   <fieldset>
     <legend>Add Course (optional)</legend>
-    <%= f.fields_for :courses do |course_fields| %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.fields_for :courses, @instructor.courses do |course_fields| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
       <%= course_fields.label :title %><br>
       <%= course_fields.text_field :title %>
       <br>
@@ -28,7 +28,7 @@
       <%= course_fields.text_field :department%>
       <br>
       <%= course_fields.label :course_number %><br>
-      <%= course_fields.text_field :course_number%>
+      <%= course_fields.text_field :course_number %>
       <br>
       <%= course_fields.label :description %><br>
       <%= course_fields.text_area :description %>

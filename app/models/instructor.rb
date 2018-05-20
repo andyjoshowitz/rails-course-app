@@ -1,6 +1,6 @@
 class Instructor < ApplicationRecord
-  has_many :courses, inverse_of: :instructor
   has_many :reviews, through: :review_instructors
+  has_many :courses
   accepts_nested_attributes_for :courses
   validates_presence_of :first_name, :second_name
 
@@ -14,7 +14,7 @@ class Instructor < ApplicationRecord
 
   def courses_attributes=(courses_attributes)
     courses_attributes.each do |i, course_attributes|
-      if !course_attributes[:title].blank? && !courses_attributes[:description].blank?
+      if !course_attributes[:title].blank? && !course_attributes[:description].blank?
         if course_attributes[:id].blank?
           self.courses.build(course_attributes)
         else

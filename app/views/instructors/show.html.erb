@@ -16,4 +16,5 @@
       </ol>
       <br>
       <%= link_to "Add a Course", new_instructor_course_path %>
+      <%= button_to "Edit", edit_instructor_path, method: :get, class: "btn btn-sm btn-outline-secondary" if current_user.try(:admin?) || @instructor.user_id == current_user.try(:id) %>
       <br>

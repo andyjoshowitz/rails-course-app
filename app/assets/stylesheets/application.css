@@ -13,25 +13,6 @@
  */
 
  /* Custom bootstrap variables must be set or imported *before* bootstrap.*/
- @import "bootstrap";
- @import "font-awesome";
- @import url('https://fonts.googleapis.com/css?family=Mallanna|Montserrat|Open+Sans|Quicksand|BebasNeueRegular');
-
-
-// font-family: 'Open Sans', sans-serif;
-// font-family: 'Montserrat', sans-serif;
-// font-family: 'Quicksand', sans-serif;
-// font-family: 'Mallanna', sans-serif;
-// font-family: 'BebasNeueRegular', sans-serif;
-
-.BNR{
-  font-family: 'BebasNeueRegular';
-}
-
-@font-face{
-  font-family: 'BebasNeueRegular';
-  src: url('../fonts/BebasNeueRegular.otf');
-}
 
  html {
    height: 100%;

@@ -14,8 +14,8 @@ end
 
 def create
   @instructor = Instructor.new(instructor_params)
+  binding.pry
   if @instructor.save
-    binding.pry
     redirect_to @instructor
   else
     render "new"
@@ -54,14 +54,12 @@ private
       :user_id,
       :first_name,
       :second_name,
-      course_attributes: [
-        :id,
+      :courses_attributes => [
         :user_id,
         :title,
-        :description,
         :department,
         :course_number,
-        :instructor_id
+        :description
         ]
       )
   end
