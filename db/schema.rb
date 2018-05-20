@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_17_174307) do
+ActiveRecord::Schema.define(version: 2018_05_20_200645) do
 
-# Could not dump table "courses" because of following StandardError
-#   Unknown type '' for column 'instructors'
+  create_table "courses", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "department"
+    t.integer "course_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "instructor_id"
+    t.integer "user_id"
+    t.index ["instructor_id"], name: "index_courses_on_instructor_id"
+    t.index ["user_id"], name: "index_courses_on_user_id"
+  end
 
   create_table "instructors", force: :cascade do |t|
     t.string "first_name"
@@ -21,6 +31,8 @@ ActiveRecord::Schema.define(version: 2018_05_17_174307) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "course_id"
+    t.index ["course_id"], name: "index_instructors_on_course_id"
     t.index ["user_id"], name: "index_instructors_on_user_id"
   end
 

@@ -10,14 +10,30 @@ def new
   @instructor.courses.build()
 end
 
+# index first_name
+
 def create
-  instructor = Instructor.create(instructor_params)
-  if instructor.save
-    redirect_to @instructor
+  @instructor = Instructor.new(instructor_params)
+  if @instructor.save
+    redirect_to instructor_path(@instructor)
   else
-    render "new"
+    render 'new'
   end
 end
+
+#def create
+#  instructor = Instructor.find(first_name: params[:first_name] ) instructor_params
+#  if instructor
+#    instructor.update
+#  else
+#    instructor.create
+#  end
+#  if instructor.save
+#    redirect_to instructor_path(@instructor)
+#  else
+#    render "new"
+#  end
+#end
 
 def show
   @instructor = Instructor.find_by(id: params[:id])
@@ -32,7 +48,7 @@ end
 def update
   @instructor = Instructor.find_by(id: params[:id])
   @instructor.update(instructor_params)
-  @instructor.courses.update(course_params)
+  #@instructor.courses.update(course_params)
   if @instructor.save
     redirect_to instructor_path(@instructor)
   else
@@ -58,7 +74,8 @@ private
         :title,
         :description,
         :department,
-        :course_number
+        :course_number,
+        :instructor_id
         ]
       )
   end

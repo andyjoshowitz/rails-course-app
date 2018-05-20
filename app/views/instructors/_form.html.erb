@@ -21,6 +21,7 @@
     <legend>Add Course (optional)</legend>
     <%= f.fields_for :courses do |course| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :instructor_id, value: @instructor.id %>
       <%= course.label :title %><br>
       <%= course.text_field :title %>
       <br>

@@ -12,8 +12,6 @@ class Course < ApplicationRecord
     instructor_attributes.each do |instructor_attributes|
       self.instructor.build(instructor_attributes)
     end
-    self.instructor = Instructor.find_or_create_by(first_name: instructor.full_name(instructor.first_name, instructor.second_name))
-    self.instructor.update(instructor)
   end
 
   def course_identity(department, course_number)
