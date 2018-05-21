@@ -9,11 +9,7 @@ Rails.application.routes.draw do
   end
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-  resources :users do
-    resources :courses, only: []
-    resources :reviews
-  end
+  resources :users 
 
    root 'welcome#home'
 end

@@ -18,14 +18,16 @@
    height: 100%;
  }
 
+ head {
+   background-color: #90b8cb;
+ }
+
   body {
     position: relative;
-    margin: 1rem;
+    margin: 2rem;
     padding-bottom: 6rem;
     min-height: 100%;
     background-color: #90b8cb;
-    font-family: 'BebasNeueRegular';
-    // font-family: 'Montserrat', sans-serif;
     // background-color: #d7e6e8
   }
 
@@ -77,7 +79,6 @@
 }
 
 .course-header {
-  font-family: 'BebasNeueRegular';
   font-size: 20px;
   color: #ffffff;
   margin-bottom: 15px;

@@ -7,6 +7,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> -->
+
   </head>
 
   <body>
@@ -29,7 +31,7 @@
     <br>
     <br>
     <% if user_signed_in? %>
-      <small>Signed in as <%= current_user.username %></small>
+      <small>Signed in as <%= current_user.email %></small>
     <% end %>
   </footer>
 </html>
