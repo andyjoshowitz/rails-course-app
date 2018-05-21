@@ -1,12 +1,12 @@
 <ol>
   <% @courses.each do |course| %>
-    <li><h3><%= course.department%> - <%=course.title %></h3>
-      <h4><%= course.instructor%></h4>
+    <li><h3><%= course.full_title(course.title, course.department, course.course_number)%></h3>
+      <h5><%= course.instructor(course.instructor_id) %></h5>
       <p class="card-text"><%= course.description %></p>
         <div class="btn-group">
           <%= button_to "View", course_path(course), method: :get, class: "btn btn-sm btn-outline-secondary" unless params[:action] == 'show' && params[:controller] == 'courses' %>
           <%= button_to "Edit", edit_course_path(course), method: :get, class: "btn btn-sm btn-outline-secondary" if current_user.try(:admin?) || course.user_id == current_user.try(:id) %>
         </div>
-        <small class="text-muted">Last updated: <br><%= course.updated_at.strftime("%m/%d/%Y") %></small>
+        <small class="text-muted">Last updated: <%= course.updated_at.strftime("%m/%d/%Y") %></small>
   <% end %></li>
   </ol>

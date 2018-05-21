@@ -14,8 +14,9 @@ end
 
 def create
   @instructor = Instructor.new(instructor_params)
+  @instructor.courses.first.user = current_user
   binding.pry
-  if @instructor.save
+  if @instructor.save && !@instructor.courses.empty?
     redirect_to @instructor
   else
     render "new"
@@ -44,7 +45,8 @@ end
 
 def new_course
   @instructor = Instructor.find_by(id: params[:id])
-  @course = Course.new
+  @course = @instructor.courses.build
+  @course.user = current_user
 end
 
 private

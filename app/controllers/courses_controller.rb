@@ -17,11 +17,8 @@ class CoursesController < ApplicationController
   end
 
   def create
-    # does instructor exist ?
-    # if does exist, save instructor id
-    # if not, do course.new(course_params)
-
     @course = Course.new(course_params)
+    binding.pry
     if @course.save
       redirect_to course_path(@course)
     else
