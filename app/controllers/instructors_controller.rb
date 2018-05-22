@@ -14,9 +14,9 @@ end
 
 def create
   @instructor = Instructor.new(instructor_params)
-  @instructor.courses.first.user = current_user
+  #@instructor.courses.first.user = current_user
   binding.pry
-  if @instructor.save && !@instructor.courses.empty?
+  if @instructor.save 
     redirect_to @instructor
   else
     render "new"

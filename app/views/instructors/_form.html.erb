@@ -19,7 +19,8 @@
   <br>
   <fieldset>
     <legend>Add Course (optional)</legend>
-    <%= f.fields_for :courses, @instructor.courses.build do |course_fields| %>
+    <%= f.fields_for :courses, @instructor.courses do |course_fields| %>
+    <%= course_fields.hidden_field :user_id, value: current_user.id %>
       <%= course_fields.label :title %><br>
       <%= course_fields.text_field :title %>
       <br>

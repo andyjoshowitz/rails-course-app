@@ -14,7 +14,7 @@
   <%= f.hidden_field :course_id, value: @course.id %>
   <label>How difficult was this course? (Enter 1 - 5)</label>
   <%= f.text_field :difficulty %><br>
-  <label>What was the quality of this course's instructor (Professor <%= @course.instructor.full_names %>)? (Enter 1 - 5)</label>
+  <label>What was the quality of this course's instructor (Professor <%= @course.instructor_name%>)? (Enter 1 - 5)</label>
   <%= f.text_field :instructor_quality %><br>
   <label>How much did you learn from this course? (Enter 1 - 5)</label>
   <%= f.text_field :amount_learned %><br>

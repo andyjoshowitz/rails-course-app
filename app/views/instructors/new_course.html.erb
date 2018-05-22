@@ -11,7 +11,7 @@
 <%= form_for @instructor do |f| %>
   <%= f.fields_for :courses, @instructor.courses.build do |course| %>
   <%= course.hidden_field :user_id, value: current_user.id %>
-  <h3>New Course for <%= @instructor.full_name(@instructor.first_name, @instructor.second_name)%> </h3>
+  <h3>New Course for <%= @instructor.full_name%> </h3>
     <%= course.label :title %><br>
     <%= course.text_field :title %>
     <br>

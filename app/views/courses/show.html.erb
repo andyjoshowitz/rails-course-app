@@ -1,7 +1,7 @@
 <div class="course-header">
   <h1><%= @course.title %> (<%= @course.department %>-<%= @course.course_number %>)</h1>
 </div>
-<h3>Instructor: <%= @course.instructor(@course.instructor_id)%></h3>
+<h3>Instructor: <%= @course.instructor_name%></h3>
 
 <p><%= @course.description %></p>
     <%= link_to "Edit course", edit_course_path(@course) if current_user.try(:admin?) || @course.user_id == current_user.try(:id) %><br>

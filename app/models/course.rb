@@ -28,11 +28,10 @@ class Course < ApplicationRecord
     self.title + " " + "(" + self.department + "-" + self.course_number.to_s + ")"
   end
 
-  def instructor(instructor_id)
-    instructors = Instructor.all
-    instructor = instructors[self.instructor_id]
-    instructor.first_name + " " + instructor.second_name
+  def instructor_name
+    instructor.full_name
   end
+
   def self.most_popular
     joins(:reviews).group("courses.id").order("(sum(reviews.course_quality)/count(*)) desc")
   end

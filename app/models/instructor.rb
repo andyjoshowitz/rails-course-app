@@ -25,7 +25,7 @@ class Instructor < ApplicationRecord
     end
   end
 
-  def full_name(first_name, second_name)
+  def full_name
     self.first_name + " " + self.second_name
   end
 
