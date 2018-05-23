@@ -12,20 +12,20 @@ class CoursesController < ApplicationController
   end
 
   def new
-    @course = Course.new
-    @course.build_instructor()
+    #flash.now[:alert] = "You must create a course through an instructor"
+    redirect_to new_instructor_path
   end
 
-  def create
-    @course = Course.new(course_params)
-    binding.pry
-    if @course.save
-      redirect_to course_path(@course)
-    else
-      flash.now[:alert] = "You must enter a name and description of the course"
-      render "new"
-    end
-  end
+  #def create
+  #  @course = Course.new(course_params)
+  #  binding.pry
+  #  if @course.save
+  #    redirect_to course_path(@course)
+  #  else
+  #    flash.now[:alert] = "You must enter a name and description of the course"
+  #    render "new"
+  #  end
+  #end
 
   def edit
     @course = Course.find_by(id: params[:id])

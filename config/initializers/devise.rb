@@ -1,19 +1,12 @@
-# frozen_string_literal: true
-
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'c6a1ae1296a5797e234ee7667bfd0000617fb111e9d183602e32231db5bc0a46920e9c2b6c37d314d1c75736a2417583369418c6c31b4a1e496685ead8a6d3a1'
-
-  # ==> Controller configuration
-  # Configure the parent class to the devise controllers.
-  # config.parent_controller = 'DeviseController'
+  # config.secret_key = '2ee5a4f2b84b44692d6329a8b0f5362beb18169a32513ee1a82e3a8998255f104cfd26092b7d9364d36ebbc179fad275a8c2a0c8b9a35baa8930298b23fe2ca9'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -115,7 +108,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '24c497a81217cf964ec682cc3d48875a42a1f312ca221570db72c7dad0b2cd1a0da6b5db1c069e521d386697e2cdfdf35429847624c8b19f633a1de655e9bf6e'
+  # config.pepper = '96b6a136b5816ee785d65c263524e440b96e07ce5c7e5c0f1e7b7b5bf11adf9fa416eef9b9c37fe25c4e34bd594998dbcbb5493f39d583a538c75947514c31fd'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -281,4 +274,5 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
 end

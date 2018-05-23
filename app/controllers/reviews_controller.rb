@@ -18,6 +18,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @course = @review.course
     if @review.save
+      render json: @review, status: 201
       redirect_to @review.course
     else
       render "new"
