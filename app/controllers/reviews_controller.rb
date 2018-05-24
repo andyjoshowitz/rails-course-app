@@ -18,7 +18,6 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @course = @review.course
     if @review.save
-      render json: @review, status: 201
       redirect_to @review.course
     else
       render "new"
@@ -51,7 +50,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:difficulty, :course_quality, :instructor_quality, :amount_learned, :work_amount, :comment, :user_id, :course_id, :instructor_id)
+    params.require(:review).permit(:difficulty, :course_quality, :instructor_quality, :amount_learned, :work_amount, :comment, :user_id, :course_id)
   end
 
   def authorized?
