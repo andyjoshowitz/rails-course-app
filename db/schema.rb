@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_20_200645) do
+ActiveRecord::Schema.define(version: 2018_05_23_213404) do
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
@@ -63,8 +63,10 @@ ActiveRecord::Schema.define(version: 2018_05_20_200645) do
     t.integer "course_id"
     t.text "comment"
     t.integer "user_id"
+    t.integer "instructor_id"
     t.index ["course_id"], name: "index_reviews_on_course_id"
     t.index ["courses_id"], name: "index_reviews_on_courses_id"
+    t.index ["instructor_id"], name: "index_reviews_on_instructor_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
     t.index ["users_id"], name: "index_reviews_on_users_id"
   end

@@ -1,4 +1,5 @@
 <h1><%= @instructor.first_name%> <%=@instructor.second_name%></h1>
+<h5><%=@instructor.overall_rating%></h5>
 
   <h3>Courses</h3>
     <ol>
@@ -15,6 +16,6 @@
       <% end %></li>
       </ol>
       <br>
-      <%= link_to "Add a Course", new_instructor_course_path %>
-      <%= button_to "Edit", edit_instructor_path, method: :get, class: "btn btn-sm btn-outline-secondary" if current_user.try(:admin?) || @instructor.user_id == current_user.try(:id) %>
+      <%= button_to "Add a Course", new_instructor_course_path %> <!--was "link_to" -->
+      <%= button_to "Edit Instructor", edit_instructor_path, method: :get, class: "btn btn-sm btn-outline-secondary" if current_user.try(:admin?) || @instructor.user_id == current_user.try(:id) %>
       <br>
