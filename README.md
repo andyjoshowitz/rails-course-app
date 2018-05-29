@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+        <%= content_tag(:strong, "Either select an instructor or add a new one (below):") %>
+
+        <%= instructor.collection_check_boxes(:instructor_ids, Instructor.all, :id, :second_name) do |b| %>
+          <br><%= b.label(class: "label-checkbox") { b.check_box + b.object.second_name}%>
+        <% end %>

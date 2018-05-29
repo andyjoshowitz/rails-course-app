@@ -12,8 +12,11 @@ class CoursesController < ApplicationController
   end
 
   def new
+    @instructor = Instructor.new
+    @instructor.courses.build()
+    @instructors = Instructor.all
     #flash.now[:alert] = "You must create a course through an instructor"
-    redirect_to new_instructor_path
+    #redirect_to new_instructor_path
   end
 
   #def create

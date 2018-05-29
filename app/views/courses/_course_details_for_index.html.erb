@@ -1,7 +1,7 @@
 <ol>
   <% @courses.each do |course| %>
     <li><h3><%= course.full_title%></h3>
-      <h5><%= course.instructor_name %></h5>
+      <h5>Instructor: <%= course.instructor_name %></h5>
       <p class="card-text"><%= course.description %></p>
         <div class="btn-group">
           <%= button_to "View", course_path(course), method: :get, class: "btn btn-sm btn-outline-secondary" unless params[:action] == 'show' && params[:controller] == 'courses' %>

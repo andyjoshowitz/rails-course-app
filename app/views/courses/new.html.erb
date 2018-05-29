@@ -1,5 +1,9 @@
-<h3>Create a new course</h3>
-<%= link_to "Or add an instructor", new_instructor_path %>
-<br>
-<br>
-  <%= render partial: "form", locals: { course: @course} %>
+<h2>Create a new course</h2>
+
+<h3>Options:</h3>
+<ol>
+  <li><%= link_to "Create a new course with a new instructor", new_instructor_path(@instructor) %></li>
+  <li>Add a course to an existent instructor (see the list below)</li>
+</ol>
+
+<%= render partial: "instructors/instructor_details_for_index", locals: {instructors: @instructors} %>

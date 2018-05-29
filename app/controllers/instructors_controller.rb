@@ -6,16 +6,12 @@ def index
 end
 
 def new
-  @instructor = Instructor.new # Find or create for instructor
+  @instructor = Instructor.new
   @instructor.courses.build()
 end
 
-# index first_name
-
 def create
   @instructor = Instructor.new(instructor_params)
-  #@instructor.courses.first.user = current_user
-  binding.pry
   if @instructor.save
     redirect_to @instructor
   else
@@ -46,7 +42,6 @@ end
 def new_course
   @instructor = Instructor.find_by(id: params[:id])
   @course = @instructor.courses.build
-  @course.user = current_user
 end
 
 private

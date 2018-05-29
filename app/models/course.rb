@@ -3,18 +3,18 @@ class Course < ApplicationRecord
   belongs_to :user
   belongs_to :instructor
 
-  #validates_presence_of :title, :description, :department, :course_number
+  validates_presence_of :title, :description, :department, :course_number
   validates :title, length: { maximum: 60 }
-  #validates :department, length: {is: 4}
-  #validates :course_number, length: { is: 3}
+  validates :department, length: {is: 4}
+  validates :course_number, length: { is: 3}
 
-  def instructor_attributes=(instructor_attributes)
-    self.build_instructor(instructor_attributes)
-  end
+  #def instructor_attributes=(instructor_attributes)
+  #  self.build_instructor(instructor_attributes)
+  #end
 
-  def course_identity(department, course_number)
-    self.department + "-" + self.course_number.to_s
-  end
+  #def course_identity
+  #  self.department + "-" + self.course_number.to_s
+  #end
 
   def self.first_three
     limit(3)

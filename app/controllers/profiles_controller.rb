@@ -10,7 +10,6 @@ class ProfilesController < ApplicationController
     @profile = @user.try(:profile)
     @courses = @user.try(:profile).try(:courses)
     @reviews = @user.reviews
-    binding.pry
   end
 
   def new
