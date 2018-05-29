@@ -6,6 +6,7 @@ def index
 end
 
 def new
+  @instructors = Instructor.all
   @instructor = Instructor.new
   @instructor.courses.build()
 end
@@ -42,6 +43,12 @@ end
 def new_course
   @instructor = Instructor.find_by(id: params[:id])
   @course = @instructor.courses.build
+end
+
+def destroy
+  @instructor = Instructor.find_by(id: params[:id])
+  @instructor.destroy
+  redirect_to root_path
 end
 
 private

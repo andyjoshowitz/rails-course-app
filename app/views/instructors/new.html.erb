@@ -1,2 +1,3 @@
 <h2>New Instructor</h2>
 <%= render partial: "form", locals: { instructor: @instructor } %>
+<%= render partial: "instructors/instructor_details_for_index", locals: {instructors: @instructors} %>

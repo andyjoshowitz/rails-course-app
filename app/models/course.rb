@@ -8,14 +8,6 @@ class Course < ApplicationRecord
   validates :department, length: {is: 4}
   validates :course_number, length: { is: 3}
 
-  #def instructor_attributes=(instructor_attributes)
-  #  self.build_instructor(instructor_attributes)
-  #end
-
-  #def course_identity
-  #  self.department + "-" + self.course_number.to_s
-  #end
-
   def self.first_three
     limit(3)
   end

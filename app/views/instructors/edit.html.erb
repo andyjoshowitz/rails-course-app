@@ -1,4 +1,4 @@
-
+<h2>Edit Instructor</h2>
 <%= form_for @instructor do |f| %>
 <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.label :first_name %><br>
@@ -9,3 +9,5 @@
   <br>
   <%= f.submit %>
 <% end %>
+
+<%= button_to "Delete Instructor", @instructor, :method => :delete, class: "btn btn-outline-danger" if !!@instructor.id && (current_user.try(:admin?) || current_user.id == @instructor.user_id) %>
