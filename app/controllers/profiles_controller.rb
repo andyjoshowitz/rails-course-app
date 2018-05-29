@@ -1,6 +1,10 @@
 class ProfilesController < ApplicationController
   before_action :authorize, only: [:edit, :update, :destroy]
 
+  def index
+    @users = User.all
+  end
+
   def show
     @user = User.find_by(id: params[:user_id])
     @profile = @user.try(:profile)
@@ -39,6 +43,8 @@ class ProfilesController < ApplicationController
       render "edit"
     end
   end
+
+
 
 
   private
