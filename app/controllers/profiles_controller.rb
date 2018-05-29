@@ -5,7 +5,8 @@ class ProfilesController < ApplicationController
     @user = User.find_by(id: params[:user_id])
     @profile = @user.try(:profile)
     @courses = @user.try(:profile).try(:courses)
-    @reviews = @user.try(:profile).try(:reviews)
+    @reviews = @user.reviews
+    binding.pry
   end
 
   def new
@@ -48,7 +49,17 @@ class ProfilesController < ApplicationController
           :department,
           :course_number,
           :description
+        ], :courses_attributes => [
+          :difficulty,
+          :course_quality,
+          :instructor_quality,
+          :amount_learned,
+          :work_amount,
+          :comment,
+          :user_id,
+          :course_id
         ]
+
       )
   end
 

@@ -18,12 +18,11 @@
     <% end %></li>
   </ol>
 
-  <h3>Your Reviews</h3>
+  <h3>Reviews on your Courses</h3>
   <ol>
     <% @reviews.each do |review| %>
-      <li><h4><%= link_to review.course.full_title, course_path(course) %></h4>
-          <br>
-          <small class="text-muted">Last updated: <%= course.updated_at.strftime("%m/%d/%Y") %></small>
+      <li><h4>Review for <%= link_to review.course.full_title, course_path(review.course) %></h4>
+          <small class="text-muted"> By: <%= review.user.email %> | Last updated: <%= review.updated_at.strftime("%m/%d/%Y") %></small>
     <% end %></li>
   </ol>
 
