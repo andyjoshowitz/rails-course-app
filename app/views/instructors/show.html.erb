@@ -9,12 +9,12 @@
             <%= button_to "View", course_path(course), method: :get %>
           </div>
           <div class="btn-group">
-            <%= button_to "Edit", edit_course_path(course), method: :get, class: "btn btn-sm btn-outline-secondary" if current_user.try(:admin?) || course.user_id == current_user.try(:id) %>
+            <%= button_to "Edit", edit_course_path(course), method: :get, class: "btn btn-sm btn-outline-secondary" if edit_option course %>
           </div>
           <small class="text-muted"><%= last_updated course %></small>
       <% end %></li>
       </ol>
       <br>
       <%= button_to "Add a Course", new_instructor_course_path %> <!--was "link_to" -->
-      <%= button_to "Edit Instructor", edit_instructor_path, method: :get, class: "btn btn-sm btn-outline-secondary" if current_user.try(:admin?) || @instructor.user_id == current_user.try(:id) %>
+      <%= button_to "Edit Instructor", edit_instructor_path, method: :get, class: "btn btn-sm btn-outline-secondary" if edit_option @instructor %>
       <br>

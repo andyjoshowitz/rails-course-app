@@ -1,10 +1,10 @@
 <div class="course-header">
   <h1><%= @course.full_title %></h1>
 </div>
-<h3>Instructor: <%= @course.instructor_name%></h3>
+<h3>Instructor: <%= link_to @course.instructor_name, instructor_path(@course.instructor.id)%></h3>
 
 <p><%= @course.description %></p>
-    <%= link_to "Edit course", edit_course_path(@course) if current_user.try(:admin?) || @course.user_id == current_user.try(:id) %><br>
+    <%= link_to "Edit course", edit_course_path(@course) if edit_option @course %><br>
     <%= link_to "All courses", courses_path, class: "btn btn-outline-dark" %>
 
 <h3>Reviews</h3>

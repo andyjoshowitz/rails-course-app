@@ -5,7 +5,7 @@
       <p class="card-text"><%= course.description %></p>
         <div class="btn-group">
           <%= button_to "View", course_path(course), method: :get, class: "btn btn-sm btn-outline-secondary" unless params[:action] == 'show' && params[:controller] == 'courses' %>
-          <%= button_to "Edit", edit_course_path(course), method: :get, class: "btn btn-sm btn-outline-secondary" if current_user.try(:admin?) || course.user_id == current_user.try(:id) %>
+          <%= button_to "Edit", edit_course_path(course), method: :get, class: "btn btn-sm btn-outline-secondary" if edit_option course %>
         </div>
         <br>
         <small class="text-muted"><%= last_updated course %></small>
