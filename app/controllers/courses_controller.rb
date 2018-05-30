@@ -51,6 +51,10 @@ class CoursesController < ApplicationController
     redirect_to root_path
   end
 
+  def least_popular
+    @least_popular = Course.least_popular
+  end
+
   private
 
   def course_params

@@ -28,6 +28,10 @@ class Course < ApplicationRecord
     joins(:reviews).group("courses.id").order("(sum(reviews.course_quality)/count(*)) desc")
   end
 
+  def self.least_popular
+    joins(:reviews).group("courses.id").order("(sum(reviews.course_quality)/count(*)) asc")
+  end
+
   def avg_difficulty
     if !reviews.empty?
       (self.reviews.collect{|r| r.difficulty}.inject(0){|sum,x| sum + x }/self.reviews.count.to_f).round(2)
